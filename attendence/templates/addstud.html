@@ -1,0 +1,14 @@
+{% for msg in messages%}
+<p style="color:red">{{msg}}</p>
+{% endfor %}
+<form method="POST" action="{% url 'addstud' %}">
+    {%csrf_token%}
+      <label>ROLL.NO.:</label><input type="text" name="roll"/><br><br>
+      <label>ID:</label><input type="text" name="sid"/><br><br>
+      <label>NAME:</label><input type="text" name="sname"/><br><br>
+      <label>CLASS:</label><input type="text" name="sclass"/><br><br>
+      <label>DEPARTMENT:</label><input type="text" name="dep"/><br><br>
+      <label>YEAR:</label><input type="text" name="year"/><br><br>
+      <label>UPDATE:</label><input type="checkbox" name="update"/><br><br>
+      <input type="submit" value="Submit">
+</form>

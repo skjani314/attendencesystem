@@ -1,0 +1,19 @@
+{% for msg in messages%}
+{{msg}}
+{% endfor %}
+<form method="POST" action="{% url 'editreg' %}">
+    {%csrf_token%}
+      <label>Select a Class:</label>
+      <select name="class">
+          {% for cl in c%}
+        <option value="{{cl.sclass}}">{{cl.sclass}}</option>
+        {% endfor%}
+      </select><br><br>
+      <label>DATE:</label><input type="date" name="pov"/><br><br>
+      <label>PERIOD:</label><input type="text" name="period"/><br><br>
+      <label>STUDENT ID:</label><input type="text" name="sid"/><br><br>
+      <label>ABSENT</label><input type="checkbox" name='ab'/><br>
+      <label>PRESENT</label><input type="checkbox" name='pr'/><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  
