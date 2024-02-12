@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*NAVIGATION BAR*/
+.navigation{
+    position: sticky;
+    top: 0;
+    z-index: 0;
+}
+.navbar{
+    background-image: linear-gradient(to right,blue,rgb(0,188,255));
+    padding: 0 !important;
+}
+.navbar-nav li{
+    padding: 0 10px;
+}
+.navbar-nav li a{
+    color: white;
+}
+.navbar-brand{
+    margin-left: 20px;
+}
+
+/*INTRODUCTION AREA*/
+.head{
+    background-image: linear-gradient(to right,blue,rgb(0,188,255));
+    color: white;
+    padding-top: 5%;
+}
+.head .container .row .col-md-12 p{
+    font-weight: 400;
+    font-size: 40px;
+}
+.head img{
+    width: 100%;
+}
+
+/*MAIN AREA*/
+.main{
+    padding-top: 5%;
+}
+.main .container .row .col-md-6 svg{
+    padding-bottom: 5%;
+}
+.main .container .row .col-md-6 .heading{
+    font-size: 500;
+    font-size: 30px;
+}
+.main .container .row .col-md-6 p{
+    font-weight: 300;
+}
+.main .container .row .col-md-6{
+    padding-bottom: 5%;
+}
+.main .container .row .col-md-6:hover{
+    background-image: linear-gradient(to right,blue,rgb(0,188,255));
+    color: white !important;
+}
