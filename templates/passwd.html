@@ -1,0 +1,15 @@
+<form  method="POST" action="/passwd">
+
+<p style="color:red;"> {% for msg in messages%}
+{{msg}}
+{% endfor %}
+{% csrf_token %}
+</p>
+<br>
+<label>New Password</label><br>
+<input type="password" name="npass" required=""><br>
+<label>Confirm Password</label><br>
+<input type="password" name="cnpass" required=""><br>
+<input type="submit"/>
+
+</form>

@@ -1,0 +1,19 @@
+<form method="POST" action="{% url 'reg' %}">
+  {%csrf_token%}
+    <label>Select a Class:</label>
+    <select name="class" required="">
+        {% for cl in c%}
+      <option value="{{cl.sclass}}">{{cl.sclass}}</option>
+      {% endfor%}
+    </select><br><br>
+    <label>From:</label><input type="date" name="from" required=""/><br><br>
+    <label>To:</label><input type="date" name="to" required=""/><br><br>
+    <label>Select a SUBJECT:</label>
+    <select name="sub" required="">
+      {% for cl in l%}
+    <option value="{{cl}}">{{cl}}</option>
+    {% endfor%}
+  </select><br><br>
+    <input type="submit" value="Submit">
+  </form>
+

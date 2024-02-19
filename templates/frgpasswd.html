@@ -1,0 +1,11 @@
+<p style="color:red;">
+{% for msg in messages%}
+{{msg}}
+{% endfor%}</p>
+<form method="POST" action="{% url 'frgpasswd' %}">
+    {%csrf_token%}
+      <label>USER NAME</label><input type="text" name="username" required=""/><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  
+  

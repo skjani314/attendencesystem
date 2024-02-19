@@ -1,0 +1,161 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ac42c3b1f7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+{% for msg in messages%}
+<p style="color:red">{{msg}}</p>
+{% endfor %}
+<form method="POST" action="{% url 'search' %}">
+    {%csrf_token%}
+      SEARCH
+      <input type="text" name="search"/>
+      <label>Select a Option:</label>
+    <select name="option" required="">
+      <option value="class">class</option>
+      <option value="student">student</option>
+      <option value="teacher">teacher</option>      
+    </select>
+      
+      <input type="submit" value="Submit">
+</form>
+
+{% if flag %}
+
+    <div class="p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12" >
+        <table border="1" height='200' width='600' cellpadding="5">
+            <tr class="bg-secondary text-center">
+                <th></th>
+                <th>S.NO</th>
+                <th>ID</th>
+                <th colspan='2'>NAME</th>
+                <th>CLASS</th>
+                <th>ATTENDANCE</th>
+            
+            </tr>
+            <form method="POST" action="{% url 'dele' %}">
+                {% csrf_token %}
+            <tr class="text-center">
+                <th class="text-center"><input  type="checkbox" name="ch"/>   
+                </th>
+                <th>{{res.roll}}</th>
+                <th>{{res.sid}}</th>
+                <th colspan='2'>{{res.sname}}</th>
+                <th>{{res.sclass}}</th>
+                <th>{{x}}</th>
+            </tr>
+            <input type="hidden" name="sid" value="{{res.sid}}"/>
+            <input type="hidden" name="flag" value="student"/>
+            <input type="submit"/>
+        </form>
+    </table>
+      
+{% elif cls %}
+
+ <form method="POST" action="{% url 'dele' %}">
+<table border="1" height='200' width='600' cellpadding="5">
+<tr class="bg-secondary text-center">
+<th></th>
+<th>S.NO</th>
+<th>ID</th>
+<th colspan='2'>NAME</th>
+<th>ATTENDANCE</th>
+
+</tr>
+{% csrf_token %}
+{% for res,x in l%}
+<tr class="text-center">
+<th class="text-center"><input  type="checkbox" name="{{res.sid}}"/>   
+</th>
+<th>{{res.roll}}</th>
+<th>{{res.sid}}</th>
+<th colspan='2'>{{res.sname}}</th>
+<th>{{x}}</th>
+
+</tr>
+<input type="hidden" value={{res.sclass}} name='class' />
+{% endfor %}
+</table> 
+<input type="hidden" value='stucls' name='flag' />
+STUDENT SUBMIT:<br><br>
+<input type="submit"/>
+
+</form> 
+
+<!--teacher table-->
+<h1 style="text-align:center">SUBJECTS </h1>
+<p style="color:red;">
+
+<form method="POST" action="{% url 'dele' %}">
+<table  border="1" height='200' width='600' cellpadding="5">
+<tr class="bg-secondary text-center">
+<th></th>
+<th>ID</th>
+<th>SUBJECT</th>
+<th>CLASS</th>
+</tr>
+{% csrf_token %}
+{% for res in clt %}
+<tr class="text-center">
+<th class="text-center"><input  type="checkbox" name="{{res.sub}}"/>   
+</th>
+<th>{{res.tid}}</th>
+<th>{{res.sub}}</th>
+<th>{{res.sclass}}</th>
+</tr>
+<input type="hidden" value={{res.sclass}} name="class"/>
+{% endfor %}
+</table> 
+<input type="hidden" value="teacls" name="flag"/>
+CLASS SUBMIT<br><br>
+<input type="submit"/>
+   </form> 
+
+{% elif tflag %}
+
+<p style="color:red;">
+   
+<form method="POST" action="{% url 'dele' %}">
+<table border="1" height='200' width='600' cellpadding="5">
+<tr class="bg-secondary text-center">
+<th></th>
+<th>ID</th>
+<th colspan='2'>NAME</th>
+<th>SUBJECT</th>
+<th>DEPARTMENT</th>
+<th>CLASS</th>
+</tr>
+{% csrf_token %}
+{% for res in clt %}
+<tr class="text-center">
+<th class="text-center"><input  type="checkbox" name="ch"/>   
+</th>
+<th>{{res.tid}}</th>
+<th>{{tea.tname}}</th>
+<th colspan='2'>{{res.sub}}</th>
+<th>{{tea.dep}}</th>
+<th>{{res.sclass}}</th>
+</tr>
+{% endfor %}
+</table> 
+<input type="hidden" value={{tea.tid}} name="tid">
+<input type="hidden" value='teacher' name="flag">
+<input type="submit"/>
+   </form> 
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endif %}

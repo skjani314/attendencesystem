@@ -1,0 +1,12 @@
+{% for msg in messages%}
+<p style="color:red;">{{msg}}</p>
+{% endfor %}
+<form method="POST" action="{% url 'edit_class' %}">
+    {%csrf_token%}
+      <label>TEACHER ID:</label><input type="text" name="tid" required=""/><br><br>
+      <label>CLASS:</label><input type="text" name="sclass" required=""/><br><br>
+      <label>SUBJECT:</label><input type="text" name="sub" required=""/><br><br>
+      <label>UPDATE:</label><input type="checkbox" name="update"/><br><br>
+      <input type="submit" value="Submit">
+      <p style="color:red;">only TEACHER ID can be updated for respective class and subject</p>
+    </form>
