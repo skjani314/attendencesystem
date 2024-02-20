@@ -200,6 +200,9 @@ def addstud(request):
               s.roll=roll
               s.sid=sid
               s.sname=sname
+              if(year not in sclass):
+                       messages.info(request,"YEAR HAVE NO SUCH CLASS")
+                       return redirect('addstud')
               s.year=year
               s.save()
               if(dep!=s.dep):
@@ -227,6 +230,12 @@ def addstud(request):
                messages.info(request,"user not found")
                return redirect('edit_class')
            else:
+              if(year not in sclass):
+                       messages.info(request,"YEAR HAVE NO SUCH CLASS")
+                       return redirect('addstud')
+              if(dep not in sclass):
+                       messages.info(request,"DEPARTMENT HAVE NO SUCH CLASS")
+                       return redirect('addstud') 
               u= User.objects.create(username=sid,password=password)
               u.save()
               s=student.objects.create(sid=sid,roll=roll,sname=sname,sclass=sclass,dep=dep,year=year)

@@ -22,7 +22,4 @@ urlpatterns = [
     path('semclear',views.semclear,name='semclear'),
     path('frgpasswd',views.frgpasswd,name='frgpasswd'),
     path('otp',views.otp,name='otp'),
-
-
-
 ]
