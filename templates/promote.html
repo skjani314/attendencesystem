@@ -1,0 +1,28 @@
+
+{% for msg in messages%}
+
+{{msg}}
+{% endfor%}
+
+<form method="POST" action="{% url 'promote' %}">
+    {%csrf_token%}
+      <label>Select a BATCH:</label>
+      <select name="batch" required="">
+        <option>E1</option>
+        <option>E2</option>
+        <option>E3</option>
+        <option>E4</option>
+    </select><br><br>
+    <label>PROMOTE TO:</label>
+    <select name="promote" required="">
+        <option>E1</option>
+        <option>E2</option>
+        <option>E3</option>
+        <option>E4</option>
+    </select><br><br>
+   <label> PASSWORD:</label>
+   <input type="password" name="pass"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  
+ 

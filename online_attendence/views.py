@@ -506,6 +506,8 @@ def dele(request):
                 return redirect('search')
         else:
             return redirect('search')
+    else:
+        return redirect('index')
         
 def semclear(request):
     if(request.user.is_authenticated and request.user.username[0]=='s'):
@@ -528,6 +530,8 @@ def semclear(request):
                 return render(request,'semclear.html')
         else:
             return render(request,'semclear.html')
+    else:
+        return redirect('index')    
     
 def frgpasswd(request):
     if request.method=="POST":
@@ -579,3 +583,26 @@ def otp(request):
            
         else:
             return redirect('index') 
+
+def promote(request):
+        if(request.user.is_authenticated and request.user.username[0]=='s'):
+          if(request.method=="POST"):
+             batch=request.POST['batch']
+             p=request.POST['pass']
+             pro=request.POST['promote']
+             u=auth.authenticate(username=request.user.username,password=p)
+             if(u is not None):
+                 std=student.objects.filter(year=batch)
+                 for st in std:
+                     st.year=pro
+                     st.save()
+                 messages.info(request,batch+" PROMOTED TO "+pro+" SUCCESSFULLY")
+                 return render(request,'semclear.html')
+             else:
+                messages.info(request,'password incorrect')
+                return render(request,'promote.html')
+          else:
+            return render(request,'promote.html')
+
+        else:
+            return redirect('index')
