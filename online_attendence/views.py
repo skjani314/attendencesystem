@@ -228,7 +228,7 @@ def addstud(request):
                 return redirect('addstud')
            elif( not student.objects.filter(sid=sid).exists() and up):
                messages.info(request,"user not found")
-               return redirect('edit_class')
+               return redirect('addstud')
            else:
               if(year not in sclass):
                        messages.info(request,"YEAR HAVE NO SUCH CLASS")
@@ -321,7 +321,7 @@ def editclass(request):
                messages.info(request,"user already exists")
                return redirect('edit_class')
           elif( not r.exists() and up):
-               messages.info(request,"user not found")
+               messages.info(request,"class with given subject not found")
                return redirect('edit_class')
           else:
             sl=clss.objects.create(tid=tid,sclass=sclass,sub=sub)
@@ -354,6 +354,7 @@ def editteacher(request):
                 t=teacher.objects.get(tid=tid)
                 t.tname=tname
                 t.sub=sub
+                t.dep=dep
                 t.save()
                 messages.info(request,"updated succesfully")
                 return redirect('edit_teacher')
@@ -597,7 +598,7 @@ def promote(request):
                      st.year=pro
                      st.save()
                  messages.info(request,batch+" PROMOTED TO "+pro+" SUCCESSFULLY")
-                 return render(request,'semclear.html')
+                 return render(request,'promote.html')
              else:
                 messages.info(request,'password incorrect')
                 return render(request,'promote.html')
@@ -606,3 +607,26 @@ def promote(request):
 
         else:
             return redirect('index')
+        
+def delbatch(request):
+        if(request.user.is_authenticated and request.user.username[0]=='s'):
+          if(request.method=="POST"):
+             batch=request.POST['batch']
+             p=request.POST['pass']
+             u=auth.authenticate(username=request.user.username,password=p)
+             if(u is not None):
+                 std=student.objects.filter(year=batch)
+                 for st in std:
+                     User.objects.filter(username=st.sid).delete()
+                 std.delete()    
+                 messages.info(request,batch+" DELETED SUCCESSFULLY")
+                 return render(request,'delbatch.html')
+             else:
+                messages.info(request,'password incorrect')
+                return render(request,'delbatch.html')
+          else:
+            return render(request,'delbatch.html')
+
+        else:
+            return redirect('index')
+

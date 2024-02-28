@@ -1,14 +1,96 @@
-{% for msg in messages%}
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ADD STUDENT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./prac8.css">
+  </head>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    .contact{
+      border-top: 5px solid rgb(0,183,255);
+    }
+    .contact .container .head{
+      font-weight: 500;
+      font-size: 40px;
+      margin: 20px 0;
+      color: rgb(61,61,61);
+    }
+    .contact .container .p{
+      color:rgb(120,120,120);
+      font-size:20px;
+      margin-bottom:20px;
+    }
+    .form-control{
+      margin-bottom: 20px;
+      border-radius: 2%;
+    }
+  </style>
+  <body>
+    <section class="contact">
+        <div class="container text-center">
+            <p class="head">Add Student</p>
+            <p>Enter the details below to add the Student<br><b>Corrections are compilacated to do,so enter your data correctly.</b></p>
+            {% for msg in messages%}
+            <p style="color:red">{{msg}}</p>
+            {% endfor %}
+            <div class="row g-3">
+              <form method="POST" action="{% url 'addstud' %}">
+                {%csrf_token%}
+              <div class="col">
+                <input type="text" name="roll" class="form-control" placeholder="Enter Roll No"/>
+              </div>
+              <div class="col">
+                <input type="text" name="sid" required="" class="form-control" placeholder="Enter your ID"/>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col">
+                <input type="text" name="sname" class="form-control" placeholder="Enter your Name"/>
+              </div>
+              <div class="col">
+                <input type="text" name="sclass"class="form-control" placeholder="Enter your Class"/>
+              </div>
+            </div>
+           <p><input type="text" name="dep" class="form-control" placeholder="Enter your Department"/></p>
+           <p><input type="text" name="year" class="form-control" placeholder="Enter your Year"/></p>
+           <p><input type="checkbox" name="update" class="form-check-input" style="border: 1px solid skyblue;"/>Update</p>
+            <p><button type="submit" class="btn btn-primary" style="width: 100px; border-radius: 5%;">Submit</button></p>
+        </div>
+      </form>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+{% comment %} {% for msg in messages%}
 <p style="color:red">{{msg}}</p>
 {% endfor %}
 <form method="POST" action="{% url 'addstud' %}">
     {%csrf_token%}
-      <label>ROLL.NO.:</label><input type="text" name="roll"/><br><br>
-      <label>ID:</label><input type="text" name="sid" required=""/><br><br>
-      <label>NAME:</label><input type="text" name="sname"/><br><br>
+      <label>ROLL.NO.:</label><input type="text" name="roll" class="form-control" placeholder="Enter Roll.no:"/ style="border:none;"><br><br>
+      <label>ID:</label><input type="text" name="sid" required="" class="form-control" placeholder="Enter your ID"/><br><br>
+      <label>NAME:</label><input type="text" name="sname" class="form-control" placeholder="Enter your Name"/><br><br>
       <label>CLASS:</label><input type="text" name="sclass"/><br><br>
       <label>DEPARTMENT:</label><input type="text" name="dep"/><br><br>
       <label>YEAR:</label><input type="text" name="year"/><br><br>
       <label>UPDATE:</label><input type="checkbox" name="update"/><br><br>
       <input type="submit" value="Submit">
-</form>
+</form>  {% endcomment %}
+
+
+

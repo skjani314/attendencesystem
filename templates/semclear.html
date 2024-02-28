@@ -1,7 +1,7 @@
 
 {% for msg in messages%}
 
-{{msg}}
+<p style="color:red">{{msg}}</p>
 {% endfor%}
 
 <form method="POST" action="{% url 'semclear' %}">

@@ -118,10 +118,7 @@
             <div class="row">
                 <div class="col-md-4 text-center">
                   <div class="image" style="margin: 30px 0;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="black" class="bi bi-person-circle img-fluid" viewBox="0 0 16 16">
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg>
+                    <img src={% static "images/admin.jpg"%} class="img-fluid" style="height:300px; width:300px">
                   </div>
                   <div class="name"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
@@ -147,13 +144,16 @@
                        
                         <div class="logout" style="margin: 15px 0;">
                           <button class="btn btn-primary" style="color: white; border: none;"><a href="/logout" style="color: white; border: none;text-decoration:none;">LOG OUT</a></button>
-                          <div class="passwdchange" style="margin: 15px 0;">
+                          <div class="logout" style="margin: 15px 0;">
                             <button class="btn btn-primary" style="color: white; border: none;"><a href="/semclear" style="color: white; border: none;text-decoration:none;">SEM CLEAR</a></button>
                           </div>
-                          <div class="passwdchange" style="margin: 15px 0;">
+                          <div class="logout" style="margin: 15px 0;">
                             <button class="btn btn-primary" style="color: white; border: none;"><a href="/promote" style="color: white; border: none;text-decoration:none;">PROMOTE</a></button>
                           </div>
-                          <div class="passwdchange" style="margin: 15px 0;">
+                          <div class="logout" style="margin: 15px 0;">
+                            <button class="btn btn-primary" style="color: white; border: none;"><a href="/delbatch" style="color: white; border: none;text-decoration:none;">DELETE BATCH</a></button>
+                          </div>
+                          <div class="logout" style="margin: 15px 0;">
                             <button class="btn btn-primary" style="color: white; border: none;"><a href="/passwd" style="color: white; border: none;text-decoration:none;">PASSWORD CHANGE</a></button>
                           </div>
                           

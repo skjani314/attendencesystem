@@ -23,5 +23,7 @@ urlpatterns = [
     path('frgpasswd',views.frgpasswd,name='frgpasswd'),
     path('otp',views.otp,name='otp'),
     path('promote',views.promote,name='promote'),
+    path('delbatch',views.delbatch,name='delbatch'),
+
 
 ]

@@ -4,17 +4,10 @@
 <p style="color:red">{{msg}}</p>
 {% endfor%}
 
-<form method="POST" action="{% url 'promote' %}">
+<form method="POST" action="{% url 'delbatch' %}">
     {%csrf_token%}
       <label>Select a BATCH:</label>
       <select name="batch" required="">
-        <option>E1</option>
-        <option>E2</option>
-        <option>E3</option>
-        <option>E4</option>
-    </select><br><br>
-    <label>PROMOTE TO:</label>
-    <select name="promote" required="">
         <option>E1</option>
         <option>E2</option>
         <option>E3</option>

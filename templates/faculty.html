@@ -2,9 +2,7 @@
 {% load static %}
 
 
-<!--Om ganeshaya namah-->
-<!--Om namo narayanayah-->
-<!--Om namah sivayah-->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -79,11 +77,14 @@
   padding-left:430px;
   }
   .pl{
-    padding-left:440px;
+    
   }
 
 }
-@media only screen and(min-width:320px)and (max-width:767px){
+@media only screen and(min-width:320px)and (max-width:767px){ 
+  .p1{
+    padding-left:300px;
+  }
   
 }
   </style>
@@ -119,10 +120,7 @@
             <div class="row">
                 <div class="col-md-4 text-center">
                   <div class="image" style="margin: 30px 0;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="black" class="bi bi-person-circle img-fluid" viewBox="0 0 16 16">
-                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg>
+                    <img src={% static "images/srikanth1.png" %} class="img-fluid">
                   </div>
                   <div class="name"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
@@ -171,12 +169,12 @@
                     </div>
                     
                 </div>
+                <img src={% static "images/wave1.png"%} class="img-fluid">
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="subhead1">
-                  <div class="headd "><h1 class="pl">MY CLASSES</h1>
-                  
+                  <div class="headd "><h1 class="pl text-center" style="margin-bottom:25px;">MY CLASSES</h1></div>
                   <div class="cards">
                     {% for cl in cls%}
                     <a href="class/{{cl.sclass}}/{{cl.sub}}" style="text-decoration:none;text-align:center;">
@@ -189,7 +187,6 @@
                    </a>
                      {% endfor %}
                   </div>
-                </div>
               </div>
               </div>
             </div>
